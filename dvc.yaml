@@ -1,0 +1,8 @@
+stages:
+  train:
+    cmd: python src/train.py
+    deps:
+    - data/sales.csv
+    - src/train.py
+    outs:
+    - total_sales.txt
