@@ -1,2 +1,6 @@
 /total_sales.txt
 /metrics.json
+mlruns/
+mlflow.db
+__pycache__/
+*.pyc
