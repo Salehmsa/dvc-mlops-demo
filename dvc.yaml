@@ -2,7 +2,21 @@ stages:
   train:
     cmd: python src/train.py
     deps:
-    - data/sales.csv
+    - data/clean_sales.csv
     - src/train.py
     outs:
-    - total_sales.txt
+    - models/model.pkl
+  prepare:
+    cmd: python src/prepare.py
+    deps:
+    - data/sales.csv
+    - src/prepare.py
+    outs:
+    - data/clean_sales.csv
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+    - models/model.pkl
+    - src/evaluate.py
+    outs:
+    - metrics.json

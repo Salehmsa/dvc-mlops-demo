@@ -1,5 +1,5 @@
 outs:
-- md5: 41e036a058b752a8878452820c293a34
-  size: 130
+- md5: d980355485499f53d433fd25c290220c
+  size: 140
   hash: md5
   path: sales.csv

@@ -3,16 +3,48 @@ stages:
   train:
     cmd: python src/train.py
     deps:
-    - path: data/sales.csv
+    - path: data/clean_sales.csv
       hash: md5
-      md5: 41e036a058b752a8878452820c293a34
-      size: 130
+      md5: d980355485499f53d433fd25c290220c
+      size: 140
     - path: src/train.py
       hash: md5
-      md5: 5cefe61b70188083f0978bc685a7a0e1
-      size: 220
+      md5: 4b8a401188378e26fad385640ff627f6
+      size: 289
     outs:
-    - path: total_sales.txt
+    - path: models/model.pkl
       hash: md5
-      md5: ff8fb47902c45a8870899ae90e05f8a4
-      size: 17
+      md5: 93e23ec9d91cc239709ac735e21917d7
+      size: 148
+  prepare:
+    cmd: python src/prepare.py
+    deps:
+    - path: data/sales.csv
+      hash: md5
+      md5: d980355485499f53d433fd25c290220c
+      size: 140
+    - path: src/prepare.py
+      hash: md5
+      md5: 8b2a5095ce4fa2578f86f9fd55eb5ade
+      size: 166
+    outs:
+    - path: data/clean_sales.csv
+      hash: md5
+      md5: d980355485499f53d433fd25c290220c
+      size: 140
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+    - path: models/model.pkl
+      hash: md5
+      md5: 93e23ec9d91cc239709ac735e21917d7
+      size: 148
+    - path: src/evaluate.py
+      hash: md5
+      md5: cd832ff10352e70bfe1408dd502c39b6
+      size: 299
+    outs:
+    - path: metrics.json
+      hash: md5
+      md5: 8b14f182c55df994ad3cc5f090d5287b
+      size: 50

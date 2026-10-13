@@ -1,10 +1,11 @@
 import pandas as pd
-
-df = pd.read_csv("data/sales.csv")
-
+import pickle
+df = pd.read_csv("data/clean_sales.csv")
 total_sales = df["amount"].sum()
-
-with open("total_sales.txt", "w") as f:
-    f.write(f"Total Sales: {total_sales}")
-
-print(f"Total Sales: {total_sales}")
+model = {
+    "total_sales": total_sales,
+    "num_rows": len(df)
+}
+with open("models/model.pkl", "wb") as f:
+    pickle.dump(model, f)
+print("Model saved successfully")
